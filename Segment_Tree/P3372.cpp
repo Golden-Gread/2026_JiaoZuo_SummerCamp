@@ -2,14 +2,14 @@
 
 using namespace std;
 typedef long long ll;
-vector<ll> data(400005,0),tree(400005,0),temp(400005,0);
+vector<ll> Data(400005,0),tree(400005,0),temp(400005,0);
 
 
 
 
 void buildTree(ll start,ll ending,ll treeCode){
 	if(start==ending){
-		tree[treeCode]=data[start];
+		tree[treeCode]=Data[start];
 		return ;
 	}
 	ll mid=start+((ending-start) >> 1);
@@ -58,7 +58,7 @@ ll getSum(ll change_s,ll change_t,ll cheak_s,ll cheak_t,ll treeCode){
 int main(){
 	ll n,m;cin>>n>>m;
 	for(ll i=1;i<=n;i++){
-		cin>>data[i];
+		cin>>Data[i];
 	}
 	
 	buildTree(1,n,1);
