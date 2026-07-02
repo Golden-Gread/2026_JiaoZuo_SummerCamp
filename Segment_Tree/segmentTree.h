@@ -25,6 +25,8 @@ inline void segmentTree::buildTree(int l,int r,int p){
     tree[p]=tree[p*2]+tree[p*2+1];
 }
 
+inline void segmentTree::pushDown(int p,int )
+
 inline void segmentTree::range_add(int l,int r,int v,int s,int t,int p){
 
 }
