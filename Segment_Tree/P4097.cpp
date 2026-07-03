@@ -13,13 +13,12 @@ struct Line{
 	double getY(int x){
 		return k*x+b;
 	}
-
-	friend bool operator <(Line a,Line b){
-		if(fabs(a.k-b.k)<eps)
-			return a.b<b.b;
-		return a.k<b.k;
-	}
 };
+
+bool cmp(Line a,Line b,int x){
+	int y1=a.getY(x),y2=b.getY(x);
+	return (fabs(y1-y2)<eps)?a.id<b.id:y1>y2;
+}
 
 struct Node{
 	int l,r,id;  // [l,r]
@@ -35,11 +34,28 @@ vector<Node> tree(XMAX*4);
 vector<Line> lines(XMAX*4);
 
 
-void build(int node,int l,int r,int L,int R,int p){
+void add_line(int node,int l,int r,int L,int R,int p){
 	if(L<=l&&r<=R){
-		
+		int mid=(l+r)>>1;
+		int &v=tree[node].id;
+		if(v==0){
+			v=p;
+			return;
+		}
+		if(cmp(lines[p],lines[v],mid)){
+			swap(lines[p],lines[v]);
+		}
+		if(l==r) return;
+		if(cmp(lines[p],lines[v],l)) add_line(tree[node].lc,l,mid,L,R,p);
+		else if(cmp(lines[p],lines[v],r)) add_line(tree[node].rc,mid+1,r,L,R,p);
+		return ;
 	}
+	int mid=(l+r)>>1;
+	if(L<=mid) add_line(tree[node].lc,l,mid,L,R,p);
+	if(R>mid) add_line(tree[node].rc,mid+1,r,L,R,p);
 }
+
+
 
 
 int main(){

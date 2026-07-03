@@ -7,5 +7,5 @@ class rbDSU{
         std::stack<int> history;
     public:
         int find(int x);
-        
+        void unite();
 };
