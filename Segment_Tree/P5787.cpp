@@ -4,10 +4,10 @@ using namespace std;
 typedef long long ll;
 const ll M=2e5+4;
 
-ll n=0;
+int n=0;
 
 struct Edge{
-	ll u,v;
+	int u,v;
 	Edge():u(-1),v(-1){}
 } e[M];
 
@@ -49,7 +49,7 @@ void rollback(){
 }
 
 void rollback_to_poll(ll x){
-	while(history.size()>x){
+	while((int)history.size()>x){
 		rollback();
 	}
 }
@@ -85,7 +85,7 @@ void dfs(ll node,ll l,ll r,bool is_right){
 	}
 	
 	if(l==r){
-		prllf("%s",((is_right)?"Yes":"No"));
+		printf("%s",((is_right)?"Yes":"No"));
 	}
 	else{
 		ll mid=(l+r)>>1;
@@ -97,7 +97,7 @@ void dfs(ll node,ll l,ll r,bool is_right){
 }
 
 int main(){
-	ll m,k;scanf("%d %d %d",&n,&m,&k);
+	int m,k;scanf("%d %d %d",&n,&m,&k);
 	
 	for(ll i=1;i<=2*n;i++){
 		fa[i]=i;
