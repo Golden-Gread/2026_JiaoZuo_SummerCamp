@@ -69,11 +69,7 @@ void adding_edge(ll node,ll nd_l,ll nd_r,ll ed_l,ll ed_r,ll edge){
 }
 
 void dfs(ll node,ll l,ll r,bool is_right){
-
-	
-
 	ll timepoll=history.size();
-	
 	for(ll edge:tree[node]){
 		ll u=e[edge].u,v=e[edge].v;
 		bool res1=unite(u,v+n);
@@ -83,7 +79,6 @@ void dfs(ll node,ll l,ll r,bool is_right){
 			break;
 		}
 	}
-	
 	if(l==r){
 		printf("%s",((is_right)?"Yes":"No"));
 	}
@@ -92,7 +87,6 @@ void dfs(ll node,ll l,ll r,bool is_right){
 		dfs(node*2,l,mid,is_right);
 		dfs(node*2+1,mid+1,r,is_right);
 	}
-	
 	rollback_to_poll(timepoll);
 }
 
