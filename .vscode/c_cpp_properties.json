@@ -11,7 +11,11 @@
                 "_UNICODE"
             ],
             "compilerPath": "D:\\redpanda\\mingw64\\bin\\g++.exe",
-            "cppStandard": "c++14"
+            "cppStandard": "c++17",
+            "compilerArgs": [
+                "-Wall",
+                "-O2"
+            ]
         }
     ],
     "version": 4
