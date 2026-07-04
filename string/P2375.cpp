@@ -24,7 +24,7 @@ void func(){
         while(j>0&&s[i]!=s[j+1]) j=nxt[j];
         if(s[i]==s[j+1]) j++;
         while(j*2>i) j=nxt[j];
-        ans*=(cnt[j]+1)%MOD;
+        ans=ans*(cnt[j]+1)%MOD;
     }
 
     printf("%lld\n",ans%MOD);
