@@ -12,13 +12,13 @@ int find(int x){
 }
 
 
-void tarjan(int node,vector<vector<int>> &g,vector<int> &ans){
+void tarjan(int node,vector<vector<int>> &g){
     parent[node]=node;
     ancestor[node]=node;
 
     for(int v:g[node]){
         depth[v]=depth[node]+1;
-        tarjan(v,g,ans);
+        tarjan(v,g);
         parent[v]=node;
         ancestor[find(node)]=node;
     }
@@ -52,6 +52,20 @@ int main(){
         g[fa].push_back(i);
     }
 
+    int m;scanf("%d",&m);
+    for(int i=1;i<=m;i++){
+        int p,q;scanf("%d %d",&p,&q);
+        que[p].push_back({q,i});
+        que[q].push_back({p,i});
+    }
+
+    tarjan(1,g);
+
+    for(int i=1;i<=m;i++){
+        printf("%d\n",ans[i]);
+    }
+
+    return 0;
 
 }
 
