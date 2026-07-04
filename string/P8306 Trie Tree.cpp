@@ -53,7 +53,7 @@ int main(){
             string s;cin>>s;
             cout<<find(root,s)<<endl;
         }
-        delete root;
+       
     }
 }
 
