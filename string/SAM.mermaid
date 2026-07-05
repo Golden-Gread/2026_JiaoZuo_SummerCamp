@@ -1,0 +1,20 @@
+flowchart TD
+    A["开始, last=0"] --> B["读入字符 c"]
+    B --> C["创建新状态 cur, len=last.len+1"]
+    C --> D["从 last 开始遍历 link 链"]
+    D --> E{"当前状态 p<br/>有 c 转移?"}
+    E -- 无 --> F["添加转移 next[p][c]=cur<br/>p = link[p]"]
+    F --> G{"p == -1?"}
+    G -- 否 --> E
+    G -- 是 --> H["link[cur] = 0"]
+    E -- "有, 记 q=next[p][c]" --> I{"len[q] == len[p]+1?"}
+    I -- 是 --> J["link[cur] = q"]
+    I -- 否 --> K["创建 clone 状态<br/>拷贝 q 的转移<br/>len[clone]=len[p]+1<br/>link[clone]=link[q]"]
+    K --> L["更新 link[q] 和 link[cur] 为 clone"]
+    L --> M["从 p 沿 link 将指向 q 的 c 转移改为指向 clone"]
+    M --> H
+    J --> N["更新 last = cur"]
+    H --> N
+    N --> O{"还有字符?"}
+    O -- 是 --> B
+    O -- 否 --> P["构建完成"]

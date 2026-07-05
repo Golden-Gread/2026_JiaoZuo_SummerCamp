@@ -1,0 +1,32 @@
+flowchart TD
+    A[开始] --> B[创建根节点 root]
+    B --> C[遍历每个模式串]
+    C --> D[取模式串中下一个字符 ch]
+    D --> E{当前节点<br/>有子节点 ch?}
+    E -- 是 --> F[移动到子节点]
+    E -- 否 --> G[创建新子节点 ch]
+    G --> F
+    F --> H{模式串<br/>还有字符?}
+    H -- 是 --> D
+    H -- 否 --> I[在当前节点记录<br/>模式串结束（output）]
+    I --> J{还有<br/>其他模式串?}
+    J -- 是 --> C
+    J -- 否 --> K[初始化队列 Q<br/>将 root 的直接子节点<br/>fail 设为 root 并入队]
+    K --> L{BFS 队列 Q<br/>不为空?}
+    L -- 是 --> M[取出队首节点 r]
+    M --> N[遍历 r 的每个子节点<br/>设字符 c，子节点 u]
+    N --> O[设 v = r.fail]
+    O --> P{v 不是 root<br/>且 v 没有子节点 c?}
+    P -- 是 --> Q[v = v.fail]
+    Q --> P
+    P -- 否 --> R{v 有子节点 c?}
+    R -- 是 --> S[u.fail = v 的子节点 c]
+    R -- 否 --> T[u.fail = root]
+    S --> U[将 u.fail 的 output<br/>合并到 u 的 output 中]
+    T --> U
+    U --> V[将 u 加入队列 Q]
+    V --> N
+    N --> W{r 的所有子节点<br/>遍历完毕?}
+    W -- 否 --> N
+    W -- 是 --> L
+    L -- 否 --> X[构建完成]
