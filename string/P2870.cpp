@@ -2,7 +2,7 @@
 using namespace std;
 
 const int MAXN = 1e6 + 5;
-char s[MAXN];
+string s;
 int n, m;
 int sa[MAXN], rk[MAXN], tp[MAXN], tax[MAXN];
 
@@ -47,15 +47,17 @@ void build_sa() {
 
 int main() {
     cin>>n;
+    s.resize(n+1);
     for(int i=1;i<=n;i++){
         cin>>s[i];
     } 
 
+    string rs=s;
+    reverse(rs.begin(),rs.end());
+    
+    s=s+"}"+rs;
 
     build_sa();
 
-    for (int i = 1; i <= n; ++i) {
-        printf("%d ", sa[i]);
-    }
-    return 0;
+    
 }
