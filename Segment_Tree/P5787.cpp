@@ -48,5 +48,13 @@ void add_edge(int p,int l,int r,int L,int R,int x){
 void dfs(int u,int l,int r){
 	int ans=1;
 	int timepoint=histroy.size();
-	
+
+	for(int i=0;i<tree[u].size();i++){
+		auto it=e[tree[u].at(i)];
+		int a=it.u,b=it.v;
+		if(a==b){
+			
+		}
+	}
+
 }
