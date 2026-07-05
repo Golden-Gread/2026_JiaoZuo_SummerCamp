@@ -16,7 +16,7 @@ void rsort() {
 
 
 void build_sa() {
-    m = 122; 
+    m = 130; 
 
 
     for (int i = 1; i <= n; ++i) rk[i] = s[i], tp[i] = i;
@@ -52,12 +52,43 @@ int main() {
         cin>>s[i];
     } 
 
-    string rs=s;
+    string rs=s.substr(1);
     reverse(rs.begin(),rs.end());
     
-    s=s+"}"+rs;
+    s=s+"["+rs;
+    int temp_n=n;
+    n=2*n+1;
 
     build_sa();
 
+    n=temp_n; 
+
+    int l = 1, r = n;
+    string ans;
+    ans.reserve(n+1);
     
+
+
+    while (l <= r) {
+
+        int rankL = rk[l];
+        
+        int posR = 2 * n - r + 2;  
+        int rankR = rk[posR];
+        
+        if (rankL < rankR) {
+            ans.push_back(s[l++]);
+        } else {
+            ans.push_back(s[r--]);
+        }
+    }
+    
+    // 输出，每80个字符换行
+    for (int i = 0; i < n; i++) {
+        cout << ans[i];
+        //if ((i + 1) % 80 == 0) cout << '\n';
+    }
+    //if (MAXN % 80 != 0) cout << '\n';
+    
+    return 0;
 }
