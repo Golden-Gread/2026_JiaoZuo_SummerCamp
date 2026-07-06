@@ -10,16 +10,30 @@ vector<vector<int>> g(52,vector<int>());
 
 vector<bool> vis(N,false);
 
-vector<int> bfs(int u){
+vector<int> bfs(int u,int to){
     vector<int> res(N,INF);
     queue<int> q;
     q.push(u);
     vis[u]=true;
+    res[u]=0; 
     while(!q.empty()){
-        auto u=q.front();
+        auto st=q.front();
         q.pop();
-
+        if(st==to){
+            break;
+        }
+        for(int color:g[st]){
+            for(int v:cows[color]){
+                if(!vis[v]){
+                    vis[v]=true;
+                    q.push(v);
+                    res[v]=min(res[v],res[st]+abs(colors[v]-colors[st]));
+                }
+            }
+        }
     }
+
+    return res;
 
 }
 
@@ -42,6 +56,8 @@ int main(){
         cows[colors[i]].push_back(i);
     }
 
+    int ans=bfs(1,n)[n];
 
-
+    cout<<(ans==INF?-1:ans)<<endl;
+    return 0;
 }
