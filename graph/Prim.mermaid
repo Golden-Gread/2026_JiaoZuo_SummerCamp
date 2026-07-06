@@ -1,0 +1,26 @@
+flowchart TD
+    A[开始] --> B[初始化 dist 为 ∞, visited 为 false,  parent 为 -1]
+    B --> C["选取起点 s, 设 dist[s] = 0"]
+    C --> D["将 (0, s) 加入最小堆"]
+    D --> E{堆非空且<br>已选边数 < V-1?}
+    E -- 否 --> F{已选边数 == V-1?}
+    F -- 是 --> G[输出最小生成树]
+    F -- 否 --> H[图不连通, 无最小生成树]
+    G --> Z[结束]
+    H --> Z
+
+    E -- 是 --> I["弹出堆顶 (weight, u)"]
+    I --> J{u 已访问?}
+    J -- 是 --> E
+    J -- 否 --> K["标记 visited[u] = true"]
+    K --> L{u 是否为起点?}
+    L -- 否 --> M["将边 (parent[u], u) 加入 MST"]
+    L -- 是 --> N[跳过]
+    M --> N
+    N --> O[遍历 u 的所有邻接边 v, w]
+    O --> P{"visited[v] == false<br>且 w < dist[v]?"}
+    P -- 否 --> O
+    P -- 是 --> Q["dist[v] = w, parent[v] = u"]
+    Q --> R["将 (w, v) 推入最小堆"]
+    R --> O
+    O --> E
