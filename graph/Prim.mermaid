@@ -18,7 +18,7 @@ flowchart TD
     L -- 是 --> N[跳过]
     M --> N
     N --> O[遍历 u 的所有邻接边 v, w]
-    O --> P{"visited[v] == false<br>且 w < dist[v]?"}
+    O --> P{"visited[v] == false<br\>且 w < dist[v]?"}
     P -- 否 --> O
     P -- 是 --> Q["dist[v] = w, parent[v] = u"]
     Q --> R["将 (w, v) 推入最小堆"]
