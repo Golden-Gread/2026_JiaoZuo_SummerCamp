@@ -18,6 +18,17 @@ void Tarjan(int u){
     stk.push(u);
     instack[u]=true;
     for(int i=nxt[u];i;i=e[i].nxt){
+        int v=e[i].to;
+        if(!dfn[u]){
+            Tarjan(v);
+            low[u]=min(low[u],low[v]);
+        }
+        else if(instack[v]){
+            low[u]=min(low[u],dfn[v]);
+        }
+    }
+
+    if(dfn[u]==low[u]){
         
     }
 }
