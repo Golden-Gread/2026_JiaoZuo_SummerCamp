@@ -9,24 +9,17 @@ const int INF=1e9+7;
 bool SPFA(vector<vector<pii>> &graph,int start){
     int n=graph.size();  
     vector<int> dist(n+1,INF);
-	
     vector<bool> in_queue(n+1,false);
-	
     vector<int> count(n+1,0);
-	
-	
     dist[start]=0;
-
     queue<int> q;
     q.push(start);
     in_queue[start]=true;
     count[start]=1;
-
     while(!q.empty()){
         int u=q.front();
         q.pop();
         in_queue[u]=false;
-
         for(int i=0;i<int(graph[u].size());i++){
 			auto p = graph[u][i];
             int v=p.first;
@@ -37,11 +30,8 @@ bool SPFA(vector<vector<pii>> &graph,int start){
                     q.push(v);
                     in_queue[v]=true;
                     count[v]++;
-                    if(count[v] > n){
-                        return 0;
-                    }
+                    if(count[v] > n) return 0;
                 }
-
             }
         }
     }
