@@ -29,6 +29,13 @@ void Tarjan(int u){
     }
 
     if(dfn[u]==low[u]){
-        
+        ++scc_cnt;
+        int x;
+        do{
+            x=stk.top();
+            scc[x]=scc_cnt;
+            instack[x]=false;
+            stk.pop();
+        }while(x!=u);
     }
 }
