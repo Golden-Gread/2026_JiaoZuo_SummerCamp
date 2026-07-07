@@ -1,5 +1,6 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
+
 typedef pair<int,int> pii;
 const int INF=1e9+7;
 
@@ -36,4 +37,33 @@ bool SPFA(vector<vector<pii>> &graph,vector<int> &dist,int start){
         }
     }
     return 1;
+}
+
+int main(){
+    int n,x,y,s;
+    cin>>n>>x>>y>>s;
+    vector<vector<pii>> graph(n+1,vector<pii>());
+    for(int i=0;i<x;i++){
+        int a,b,c;
+        cin>>a>>b>>c;
+        graph[a].push_back({c,b});
+        graph[b].push_back({c,a});
+    }
+    for(int i=0;i<y;i++){
+        int a,b,c;
+        cin>>a>>b>>c;
+        graph[a].push_back({c,b});
+    }
+    vector<int> dist(n+1,INF);
+    if(SPFA(graph,dist,s)){
+        for(int i=1;i<=n;i++){
+            if(dist[i]!=INF){
+                cout<<dist[i]<<endl;
+            }
+            else{
+                cout<<"NO PATH"<<endl;
+            }
+        }
+    }
+
 }
