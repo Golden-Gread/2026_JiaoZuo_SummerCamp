@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 typedef long long ll;
-typedef __int128_t ll128;
+typedef __int128 i128;
 
 multiset<ll> s;
 
@@ -17,8 +17,7 @@ int exGCD(int a, int b, int &x, int &y) {//Ax+By=GCD(a,b)
     return gcd;
 }
 
-
 int main(){
-
+    
 }
 
