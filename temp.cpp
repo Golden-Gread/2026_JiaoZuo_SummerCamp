@@ -15,7 +15,7 @@ int gcd(int a,int b){
     return gcd(b,a%b);
 }
 long long read(){
-    long long  x;
+    long long x;
     cin>>x;
     return x;
     // int x=0;
