@@ -9,7 +9,8 @@ int main(){
         int u,childNum;
         for(int i=0;i<n;i++){
             
-            scanf()
+            scanf("%d:(%d)",&u,&childNum);
+            
 
         }
     }
