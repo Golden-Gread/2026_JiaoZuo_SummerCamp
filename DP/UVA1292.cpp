@@ -34,7 +34,7 @@ int main(){
             scanf("\n");
         }
         int rt;
-        for(int i=1;i<=n;i++){
+        for(int i=0;i<=n;i++){
             if(deg[i]==0){
                 rt=i;
                 dfs(i,tree,dp);
