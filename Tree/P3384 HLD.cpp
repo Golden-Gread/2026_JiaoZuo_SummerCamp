@@ -169,7 +169,6 @@ int main(){
 			cout<<subtreeQuery(x)<<"\n";
 		}
 	}
-	
 	return 0;
 	
 	
